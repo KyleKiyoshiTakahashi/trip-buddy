@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		.container{
+			min-height: 400px;
+			width: 970px;
+		}
+		.back{
+			display: inline-block;
+			margin-left: 200px;
+		}
+		.logout{
+			display: inline-block;
+			margin-left: 10px;
+		}
+		.title{
+			display: inline-block;
+			margin-top: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h3 class="title">Add A Trip</h3>
+		<a href="/back" class="back">Back</a>
+		<a href="/logout" class="logout">Logout</a>
+		
+		{% with messages = get_flashed_messages() %}
+	        {% if messages %}
+	            {% for message in messages %}
+	                <p>{{message}}</p>
+	            {% endfor %}
+	        {% endif %}
+	    {% endwith %}
+		<form action="/add" method="post">
+			<p>Destination: <input type="text" name="destination"></p>	
+			<p>Description: <input type="text" name="description"></p>
+			<p>Date From: <input type="date" name="start_date"></p>
+			<p>Date To: <input type="date" name="end_date"></p>	
+			<input type="submit" value="Add Trip">
+		</form>
+	</div>
+</body>
+</html>
